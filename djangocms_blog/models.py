@@ -281,7 +281,7 @@ class BasePostPlugin(CMSPlugin):
 
     def post_queryset(self, request=None):
         language = get_language()
-        posts = Post._default_manager.active_translations(
+        posts = Post.objects.active_translations(
             language_code=language)
         if not request or not getattr(
                 request, 'toolbar', False) or not request.toolbar.edit_mode:
